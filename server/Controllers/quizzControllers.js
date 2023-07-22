@@ -28,13 +28,13 @@ const compose = asyncHandler(async (req, res)=>{
 // route   POST api/quizz/checkAnswers
 // access  public
 const checkAnswers = asyncHandler(async(req, res)=>{
-    // const quizzUser = await User.findById(req._id); // _id is used remember
-    // const inputAnswers = req.answers;
+    const quizzUser = await User.findById(req._id); // _id is used remember
+    const inputAnswers = req.answers;
     let score = 0;
-    // for(let i=1 ;i<=quizzUser.questionnaire.length; i++){
-    //     const rightAnswer = quizzUser.questionnaire[i].answer;
-    //     if(_.isEqual(inputAnswers[i],rightAnswer)) score++;
-    // }
+    for(let i=1 ;i<=quizzUser.questionnaire.length; i++){
+        const rightAnswer = quizzUser.questionnaire[i].answer;
+        if(_.isEqual(inputAnswers[i],rightAnswer)) score++;
+    }
     res.json({score});
 })
 
