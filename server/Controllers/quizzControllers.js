@@ -25,6 +25,25 @@ const compose = asyncHandler(async (req, res)=>{
 });
 
 
+// route   GET api/quizz
+// access  Public
+const  getQuizzTitles = asyncHandler(async(req, res)=>{
+    const user = await User.findById(req._id);
+    for(let i=0; i<=user.questionnaire.length; i++){
+        const title = user.questionnaire[i].title;
+        if(title === req.title){
+            const questions = [];
+            for(let j=0; j<user.questionnaire[i].question.length; j++){
+                questions.push(user.questionnaire[i].question[j]);
+            }
+            return res.json({
+                title,
+                questions
+            });
+        }
+    }
+})
+
 // route   POST api/quizz/checkAnswers
 // access  public
 const checkAnswers = asyncHandler(async(req, res)=>{
@@ -38,4 +57,4 @@ const checkAnswers = asyncHandler(async(req, res)=>{
     res.json({score});
 })
 
-export {compose, checkAnswers};
+export {compose, checkAnswers, getQuizzTitles};
