@@ -62,10 +62,10 @@ const logoutUser = asyncHandler(async (req, res) => {
 });
 
 
-//route     GET api/users/profile
+//route     GET api/users/:userId/profile
 // access   Private
 const getUserProfile = asyncHandler(async (req, res)=>{
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.params.userId);
     if(user){
         res.json({
             _id: user._id,
@@ -75,10 +75,10 @@ const getUserProfile = asyncHandler(async (req, res)=>{
     }
 });
 
-// route   PUT /api/users/profile
+// route   PUT /api/users/:userId/profile
 // access  Private
 const updateUserProfile = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.params.userId);
     if (user) {
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email
