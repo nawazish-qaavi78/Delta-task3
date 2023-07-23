@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap');
+
+body {
+    background-image: url(../../images/LandingPageImage.jpg);
+    background-size: 100%;
+}
+
+
+.button-div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    font-family: 'Londrina Outline', cursive;
+    font-size: 18px;
+    font-weight: bold;
+    background: #C3EDC0;
+    width: 120px;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #FDFFAE;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.title {
+    color: red;
+    font-family: 'Londrina Outline', cursive;
+    font-size: 100px;
+}
+
+#page {
+    display: inline-block;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    -ms-transform: translate(-50%, -25%);
+    transform: translate(-50%, -25%);
+}
