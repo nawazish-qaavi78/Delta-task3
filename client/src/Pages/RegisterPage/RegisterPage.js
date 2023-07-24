@@ -8,28 +8,28 @@ const RegisterPage = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
-  const handleSubmit = async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
     await Register({
       email,
       password,
       name
-    })
+    });
   }
   return (
     <div id='page'>
       <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name</label>
-        <input value={name} onChange={(e)=>setName(e.target.value)} type='text' />
-      </div>
+        <div>
+          <label>Name</label>
+          <input value={name} onChange={(e) => setName(e.target.value)} type='text' />
+        </div>
         <div>
           <label>Email</label>
-          <input value={email} onChange={(e)=>setEmail(e.target.value)} type='email' />
+          <input value={email} onChange={(e) => setEmail(e.target.value)} type='email' />
         </div>
         <div>
           <label>Password:</label>
-          <input value={password} onChange={(e)=>setPassword(e.target.value)} type='password' />
+          <input value={password} onChange={(e) => setPassword(e.target.value)} type='password' />
         </div>
         <button type="submit">Register</button>
       </form>

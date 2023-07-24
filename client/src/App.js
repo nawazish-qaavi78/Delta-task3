@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RegisterPage from './Pages/RegisterPage/RegisterPage'
 import LandingPage from './Pages/LandingPage/LandingPage';
 import LoginPage from './Pages/LoginPage/LoginPage';
+import ProfilePage from './Pages/ProfilePage/ProfilePage';
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
           <Route path='/' Component={LandingPage} />
           <Route path='/login' Component={LoginPage} />
           <Route path='/register' Component={RegisterPage} />
+          <Route path='/profile' Component={ProfilePage} />
+          <Route path='/:userId/profile' Component={ProfilePage} />
         </Routes>
       </BrowserRouter>
     </div>

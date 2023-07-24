@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap');
+
+
+body {
+    background-image: url(../../images/LandingPageImage.jpg);
+    background-size: 100%;
+}
+
+h1 {
+    color: red;
+    font-family: 'Londrina Outline', cursive;
+}
