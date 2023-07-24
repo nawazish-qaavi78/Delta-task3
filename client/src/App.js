@@ -12,8 +12,7 @@ function App() {
           <Route path='/' Component={LandingPage} />
           <Route path='/login' Component={LoginPage} />
           <Route path='/register' Component={RegisterPage} />
-          <Route path='/profile' Component={ProfilePage} />
-          <Route path='/:userId/profile' Component={ProfilePage} />
+          <Route path='/profile/:userId' Component={ProfilePage} />
         </Routes>
       </BrowserRouter>
     </div>

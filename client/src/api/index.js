@@ -10,7 +10,16 @@ const getUserName = async (userId) =>{
     return data;
 }
 
-export const getQuizzTitles = async (userId) => {
+const getQuizzTitles = async (userId) => {
     const {data} = await API.get(`api/quizz/${userId}/titles`);
     return data;
+}
+
+export const searchUserProfile = async (userId)=>{
+    const {name} = await getUserName(userId);
+    const {allTitles} = await getQuizzTitles(userId);
+    return {
+        profileName: name,
+        titles: allTitles
+    }
 }

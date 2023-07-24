@@ -31,19 +31,13 @@ const compose = asyncHandler(async (req, res) => {
 });
 
 
-// route   GET api/quizz/:quizzOwnerId/:quizzId
+// route   GET api/quizz/:quizzId
 // access  Public
 const getQuizz = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.quizzOwnerId);
-    const quizzId = req.params.quizzId;
-    for(let i =0; i<user.quizzes.length; i++){
-        const someQuizz = user.quizzes[i];
-        const requiredQuizz = await someQuizz.findById(quizzId);
-        if(requiredQuizz){
-            res.json({requiredQuizz});
-        }
-    }
-    if(!requiredQuizz){
+    const requiredQuizz = Quizz.findById(req.params.quizzId);
+    if(requiredQuizz){
+        res.json({requiredQuizz});
+    }else{
         res.status(404);
         throw new Error('No such quizz found');
     }
