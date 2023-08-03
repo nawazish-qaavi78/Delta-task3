@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Register } from '../../api';
 import './RegisterPage.css';
 
@@ -7,6 +7,7 @@ const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +16,7 @@ const RegisterPage = () => {
       password,
       name
     });
+    navigate('/profile');
   }
   return (
     <div id='page'>

@@ -1,8 +1,19 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const TakeQuizzMenu = () => {
+const TakeQuizzMenu = (props) => {
+  const navigate = useNavigate();
+
+  const handleClick = (e)=>{
+    e.preventDefault();
+    navigate(`/${props.id}`);
+  }
+
   return (
-    <div>TakeQuizzMenu</div>
+    <div>
+      <h2>{props.title}</h2>
+      <button onClick={handleClick} >Take Quizz</button>
+    </div>
   )
 }
 

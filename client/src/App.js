@@ -2,7 +2,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RegisterPage from './Pages/RegisterPage/RegisterPage'
 import LandingPage from './Pages/LandingPage/LandingPage';
 import LoginPage from './Pages/LoginPage/LoginPage';
-import ProfilePage from './Pages/ProfilePage/ProfilePage';
+import UserProfilePage from './Pages/ProfilePage/UserProfilePage';
+import SearchedProfile from './Pages/ProfilePage/SearchedProfile';
+import QuizzPage from './Pages/QuizzPage/quizzPage';
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
           <Route path='/' Component={LandingPage} />
           <Route path='/login' Component={LoginPage} />
           <Route path='/register' Component={RegisterPage} />
-          <Route path='/profile/:userId' Component={ProfilePage} />
+          <Route path='/profile' Component={UserProfilePage} />
+          <Route path='/profile/:userId' Component={SearchedProfile} />
+          <Route path='/:quizzId' Component={QuizzPage} />
         </Routes>
       </BrowserRouter>
     </div>

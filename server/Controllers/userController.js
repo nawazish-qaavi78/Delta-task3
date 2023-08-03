@@ -31,6 +31,26 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 });
 
+// Route   /api/users/getUserData
+// Access  Public
+const getUserData = asyncHandler(async(req, res)=>{
+    const token = req.cookies.jwt;
+    if(token){
+        try {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const data = await User.findById(decoded.userId).select('-password');
+            res.json(data);
+        } catch (error) {
+            console.error(error);
+            res.status(401);
+            throw new Error('Not authorized, token failed');
+        }
+    } else{
+        res.status(401);
+        throw new Error('Not authorized, no token');
+    }
+})
+
 
 // route    POST /api/users/auth
 // access   Public
@@ -44,7 +64,6 @@ const authUser = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
         });
-        console.log("user verified");
     } else {
         res.status(400);
         throw new Error('Invalid email or password');
@@ -98,4 +117,4 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
 
 
-export { registerUser, authUser, logoutUser, updateUserProfile, getUserProfile };
+export { registerUser, authUser, logoutUser, updateUserProfile, getUserProfile, getUserData };

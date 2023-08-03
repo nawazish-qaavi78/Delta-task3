@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { Login } from '../../api';
+import { Login, getUserId } from '../../api';
 import './LoginPage.css'
 
 const LoginPage = () => {
@@ -14,7 +14,7 @@ const LoginPage = () => {
       email,
       password
     });
-    navigate('/')
+    navigate(`/profile`);
   }
   return (
     <div id='page'>

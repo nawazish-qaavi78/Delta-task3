@@ -17,10 +17,16 @@ const getUserName = async (userId) =>{
     return data;
 }
 
+export  const getUserData = async() => {
+    const {name, quizzes} = await API.get('/api/users/userData');
+    return {name, quizzes};
+};
+
 const getQuizzTitles = async (userId) => {
     const {data} = await API.get(`api/quizz/${userId}/titles`);
     return data;
 }
+
 
 export const searchUserProfile = async (userId)=>{
     const {name} = await getUserName(userId);
@@ -30,3 +36,9 @@ export const searchUserProfile = async (userId)=>{
         titles: allTitles
     }
 }
+
+
+export const getQuizz = (quizzId) =>API.get(`api/quizz/${quizzId}`);
+
+
+
