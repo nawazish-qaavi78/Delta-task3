@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Login } from '../../api';
 import './LoginPage.css'
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -13,6 +14,7 @@ const LoginPage = () => {
       email,
       password
     });
+    navigate('/')
   }
   return (
     <div id='page'>

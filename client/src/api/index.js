@@ -1,10 +1,17 @@
 import axios from "axios";
 
-const API = axios.create({baseURL: "http://localhost:5000"})
+const API = axios.create({
+    baseURL: "http://localhost:5000",
+    withCredentials: true,
+    headers: {
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',   
+    }
+})
 
 
 export const Register = (formData)=>API.post('api/users/', formData);
-export const Login = (formData) => API.post('api/users/login/', formData);
+export const Login = (formData) => API.post('api/users/auth/', formData);
 const getUserName = async (userId) =>{
     const {data} = await API.get(`api/users/${userId}/profile`);
     return data;
