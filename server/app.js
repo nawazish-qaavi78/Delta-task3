@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -14,7 +15,8 @@ connectDB();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors());
+app.use(cors({credentials:true, origin:"http://localhost:3000"}));
+app.use(cookieParser());
 app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/quizz', quizzRoutes);
