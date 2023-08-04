@@ -37,8 +37,16 @@ export const searchUserProfile = async (userId)=>{
     }
 }
 
+export const postQuizz = (formData)=>API.post(`/api/quizz/compose`, formData);
+
 
 export const getQuizz = (quizzId) =>API.get(`api/quizz/${quizzId}`);
+
+export const checkAnswers = (answers, quizzId) => API.post(`/${quizzId}/checkAnswers`, answers);
+
+export const saveScore = (score, quizzId) => API.put(`api/users/save-score/${quizzId}`, {score});
+
+export const getScore = (quizzId)=>API.get(`api/users/score/${quizzId}`);
 
 
 

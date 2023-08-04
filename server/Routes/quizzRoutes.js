@@ -7,7 +7,7 @@ const router = express.Router();
 // here root route is api/quizz
 router.route('/:quizzId').get(getQuizz);
 router.route('/:quizzOwnerId/titles').get(getAllTitles);
-router.route('/:quizzOwnerId/compose').post(protect,compose);
+router.route('/compose').post(protect,compose);
 router.route('/:quizzId/checkAnswers').post(checkAnswers);
 
 export default router;

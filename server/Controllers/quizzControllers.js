@@ -4,11 +4,13 @@ import User from '../models/user.js';
 import _ from 'lodash';
 
 
-// route   POST /api/quizz/:quizzOwnerId/compose
+// route   POST /api/quizz/compose
 // access  Private
 const compose = asyncHandler(async (req, res) => {
     const { title, questionnaire } = req.body;
-    const userid = req.params.quizzOwnerId;
+
+    const userid = req.user._id;
+
     const quizzExisits = await Quizz.findOne({ title });
     if (quizzExisits) {
         res.status(400);

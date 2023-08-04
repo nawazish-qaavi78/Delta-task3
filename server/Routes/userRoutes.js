@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerUser, authUser, logoutUser, updateUserProfile, getUserProfile, getUserData } from '../Controllers/userController.js';
+import { registerUser, authUser, logoutUser, updateUserProfile, getUserProfile, getUserData, saveScore } from '../Controllers/userController.js';
 import protect from '../middleware/authMiddleware.js';
 
 
@@ -11,5 +11,6 @@ router.route('/auth').post(authUser);
 router.route('/logout').post(logoutUser);
 router.route('/:userId/profile').put(protect,updateUserProfile).get(getUserProfile);
 router.route('/getUserData').get(getUserData);
+router.route("/save-score/:quizzId").put(protect, saveScore);
 
 export default router;

@@ -34,21 +34,13 @@ const registerUser = asyncHandler(async (req, res) => {
 // Route   /api/users/getUserData
 // Access  Public
 const getUserData = asyncHandler(async(req, res)=>{
-    const token = req.cookies.jwt;
-    if(token){
         try {
-            const decoded = jwt.verify(token, process.env.JWT_SECRET);
-            const data = await User.findById(decoded.userId).select('-password');
-            res.json(data);
+            res.json(req.user);
         } catch (error) {
             console.error(error);
             res.status(401);
             throw new Error('Not authorized, token failed');
         }
-    } else{
-        res.status(401);
-        throw new Error('Not authorized, no token');
-    }
 })
 
 
@@ -115,6 +107,23 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     }
 })
 
+// route   PUT /api/users/save-score/:quizzId
+// access  Private
+const saveScore = asyncHandler(async(req, res)=>{
+    const userId = req.user._id;
+    User.findByIdAndUpdate(userId, {
+        $push: {
+            scores: {
+                quizzId: req.params.quizzId,
+                score: req.score,
+            }
+        }
+    })
+})
 
 
-export { registerUser, authUser, logoutUser, updateUserProfile, getUserProfile, getUserData };
+
+
+
+
+export { registerUser, authUser, logoutUser, updateUserProfile, getUserProfile, getUserData, saveScore };

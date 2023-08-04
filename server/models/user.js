@@ -2,6 +2,18 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import Quizz from './quizz.js';
 
+
+const scoreSchema = new mongoose.Schema({
+    quizzId: {
+        type:String,
+        required: true
+    },
+    score:{
+        type:Number,
+        default: 0
+    }
+})
+
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -19,6 +31,10 @@ const userSchema = new mongoose.Schema({
     quizzes: {
         type: [Quizz.Schema],
         default: []
+    },
+    scores: {
+        type:[scoreSchema],
+        default :[]
     }
 });
 

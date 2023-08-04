@@ -4,7 +4,8 @@ import LandingPage from './Pages/LandingPage/LandingPage';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import UserProfilePage from './Pages/ProfilePage/UserProfilePage';
 import SearchedProfile from './Pages/ProfilePage/SearchedProfile';
-import QuizzPage from './Pages/QuizzPage/quizzPage';
+import QuizzPage from './Pages/QuizzPage/QuizzPage';
+import ScorePage from './Pages/ScorePage/ScorePage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/profile' Component={UserProfilePage} />
           <Route path='/profile/:userId' Component={SearchedProfile} />
           <Route path='/:quizzId' Component={QuizzPage} />
+          <Route path='/:quizzId/score' Component={ScorePage} />
         </Routes>
       </BrowserRouter>
     </div>
